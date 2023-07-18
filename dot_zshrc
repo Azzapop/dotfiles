@@ -1,0 +1,30 @@
+# Set terminal to use 256 colors
+export TERM=xterm-256color
+
+ZSH_DIR="$HOME/.zsh"
+
+# Set cache directory, if it doesn't exist make one
+CACHE_DIR="$HOME/.cache"
+[ -d $CACHE_DIR ] || mkdir $CACHE_DIR
+
+# Prompt
+# Only have 1 of these active at a time
+#. "$ZSH_DIR/one-line-prompt.zsh"
+# two line prompt currently not configured
+. "$ZSH_DIR/prompt/two-lines.zsh"
+
+# Completion
+. "$ZSH_DIR/completion.zsh"
+
+# Aliases
+. "$ZSH_DIR/aliases.zsh"
+
+# PATH
+. "$ZSH_DIR/path.zsh"
+
+# Plugins
+. "$ZSH_DIR/plugins/init.zsh"
+. "$ZSH_DIR/plugins/configure.zsh"
+
+# History
+. "$ZSH_DIR/history.zsh"
