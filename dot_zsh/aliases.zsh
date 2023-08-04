@@ -35,3 +35,5 @@ alias gpr='git pull --rebase'
 
 alias gl='/usr/bin/git log --date-order --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --date=relative'
 
+# neovim
+alias vi='nvim'
