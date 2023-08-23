@@ -1,0 +1,16 @@
+*~
+.DS_Store
+.ruby-gemset
+.ruby-version
+
+# Ignore local environments
+.env
+
+# Ignore rubygems
+/vendor/ruby/
+
+latest*.dump
+
+package-lock.json
+
+/public
