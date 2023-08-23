@@ -1,0 +1,3 @@
+#! /bin/zsh
+
+automator -i "${1}" ~/.workflows/set-desktop-background.workflow

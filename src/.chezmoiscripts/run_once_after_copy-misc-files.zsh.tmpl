@@ -1,0 +1,9 @@
+#! /bin/zsh
+
+echo "Copying fonts..."
+# Copy any fonts to the font book
+cp -r {{ .workingTree }}/fonts/* {{ .homeDir }}/Library/Fonts
+
+echo "Linking wallpapers..."
+# Link wallpapers to the Pcitures folder
+ln -s {{ .workingTree }}/wallpapers {{ .homeDir }}/Pictures/wallpapers

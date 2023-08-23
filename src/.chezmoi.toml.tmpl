@@ -1,0 +1,12 @@
+{{- $git_email := promptString "Git email address" -}}
+{{- $git_name := promptString "Git name" -}}
+{{- $run_as_admin := promptBool "Run as admin?" -}}
+{{- $machine_type := promptChoice "Personal or work machine?" (list "personal" "work") -}}
+
+[data.git_data]
+    git_email = {{ $git_email | quote }}
+    git_name = {{ $git_name | quote }}
+
+[data.user_data]
+    run_as_admin = {{ $run_as_admin | quote }}
+    machine_type = {{ $machine_type | quote }}
