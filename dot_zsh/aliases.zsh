@@ -37,3 +37,6 @@ alias gl='/usr/bin/git log --date-order --graph --pretty=format:'\''%Cred%h%Cres
 
 # neovim
 alias vi='nvim'
+
+# misc
+alias c='clear'
