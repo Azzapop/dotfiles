@@ -29,7 +29,11 @@ return {
         String = { fg = C.magenta.bright },
 
         -- Fix syntax highlighting from tsserver
-        ['@lsp.type.parameter.typescript'] = { fg = C.red.bright },
+        -- ['@lsp.type.parameter.typescript'] = { fg = C.red.base },
+        -- ['@lsp.typemod.property.declaration.typescript'] = { fg = C.cyan.base },
+        -- ['@lsp.mod.declaration.typescript'] = { fg = C.red.base },
+        typescriptVariable = { fg = C.orange.base },
+        typescriptBraces = { fg = C.white0 }
       },
       -- Cursorline options.  Also includes visual/selection.
       cursorline = {
