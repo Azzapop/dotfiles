@@ -61,14 +61,16 @@ vim.opt.mouse='a'
 -- enable gui colors
 vim.opt.termguicolors=true
 
--- open a window on hover of symbol if lsp has any diagnostics/hints
-vim.cmd([[autocmd! CursorHold,CursorHoldI * :lua vim.lsp.buf.hover()]])
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, { focusable = false }
-)
-
 -- require the lazy.nvim plugin manager, this will install and manage all plugins
 require('core.lazy')
+-- require custom keymappings
+require('core.keymaps')
 
 -- colorscheme at the end as it is dependant on plugins
 vim.cmd.colorscheme 'nordic'
+
+local signs = { Error = "󰅚 ", Warn = "W", Hint = "󰌶", Info = "󰋽 " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
