@@ -69,7 +69,7 @@ require('core.keymaps')
 -- colorscheme at the end as it is dependant on plugins
 vim.cmd.colorscheme 'nordic'
 
-local signs = { Error = "󰅚 ", Warn = "W", Hint = "󰌶", Info = "󰋽 " }
+local signs = { Error = "󰅚 ", Warn = "󰀪", Hint = "󰌶", Info = "󰋽 " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
