@@ -1,0 +1,15 @@
+{
+  "lastChangelogVersion": "0.70.5",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "off",
+  "packages": [
+    "~/src/pi-packages/packages/inventory",
+    "~/src/pi-packages/packages/themes",
+    "npm:pi-usage-bars",
+    "npm:omni-pi",
+    "npm:@ifi/pi-plan",
+    "npm:pi-powerline-footer"
+  ],
+  "theme": "nordic"
+}

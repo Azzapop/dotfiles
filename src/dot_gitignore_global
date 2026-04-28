@@ -14,3 +14,5 @@ latest*.dump
 package-lock.json
 
 /public
+
+.pi
