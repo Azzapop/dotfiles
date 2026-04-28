@@ -8,8 +8,7 @@
     "~/src/pi-packages/packages/themes",
     "npm:pi-usage-bars",
     "npm:omni-pi",
-    "npm:@ifi/pi-plan",
-    "npm:pi-powerline-footer"
+    "npm:@ifi/pi-plan"
   ],
   "theme": "nordic"
 }
