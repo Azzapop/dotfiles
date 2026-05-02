@@ -1,14 +1,25 @@
 {
-  "lastChangelogVersion": "0.70.5",
+  "lastChangelogVersion": "0.72.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "off",
   "packages": [
-    "~/src/pi-packages/packages/inventory",
-    "~/src/pi-packages/packages/themes",
-    "npm:pi-usage-bars",
-    "npm:omni-pi",
-    "npm:@ifi/pi-plan"
+    "/Users/aaron/src/pi-packages/packages/pippin",
+    "/Users/aaron/src/pi-packages/packages/pi-cockpit",
+    "/Users/aaron/src/pi-packages/packages/themes"
   ],
-  "theme": "nordic"
+  "theme": "nordic",
+  "pippin": {
+    "specs": [
+      {
+        "path": "/Users/aaron/src/pi-packages/packages/pi-cockpit"
+      },
+      {
+        "path": "/Users/aaron/src/pi-packages/packages/themes"
+      },
+      {
+        "path": "/Users/aaron/src/pi-packages/~/src/pi-packages/packages/pippin"
+      }
+    ]
+  }
 }
