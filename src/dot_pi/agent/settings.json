@@ -1,4 +1,6 @@
 {
+  "shellPath": "/bin/zsh",
+  "shellCommandPrefix": "source ~/.zshrc",
   "lastChangelogVersion": "0.72.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
