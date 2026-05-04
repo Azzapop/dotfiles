@@ -36,6 +36,10 @@ wt() {
         echo "usage: wt add [-b] <branch>" >&2
         return 1
       fi
+      if [[ "$branch" == "root" ]]; then
+        echo "error: root is a reserved name" >&2
+        return 1
+      fi
       local safe="$(__wt_safe_branch "$branch")"
       local wt_path="$base_dir/$repo/$safe"
 
@@ -60,6 +64,10 @@ wt() {
 
     rm)
       local branch="$1"
+      if [[ "$branch" == "root" ]]; then
+        echo "error: root is a reserved name" >&2
+        return 1
+      fi
       if [[ -z "$branch" ]]; then
         if command -v fzf &>/dev/null; then
           branch=$(git worktree list --porcelain | grep '^branch' | sed 's|branch refs/heads/||' | fzf --prompt="remove worktree: ")
@@ -85,6 +93,10 @@ wt() {
 
     cd)
       local branch="$1"
+      if [[ "$branch" == "root" ]]; then
+        cd "$(git worktree list --porcelain | head -1 | awk '{print $2}')"
+        return
+      fi
       if [[ -z "$branch" ]]; then
         if command -v fzf &>/dev/null; then
           branch=$(git worktree list --porcelain | grep '^branch' | sed 's|branch refs/heads/||' | fzf --prompt="worktree: ")
@@ -114,6 +126,51 @@ wt() {
       echo "  rm [branch]         remove worktree (fzf if no arg)"
       echo "  cd [branch]         cd into worktree (fzf if no arg)"
       echo "  root                cd to main repo root"
+      ;;
+  esac
+}
+
+_wt() {
+  local -a subcmds
+  subcmds=(
+    'add:create worktree and cd into it'
+    'ls:list worktrees'
+    'rm:remove worktree'
+    'cd:cd into worktree'
+    'root:cd to main repo root'
+  )
+
+  if (( CURRENT == 2 )); then
+    _describe 'subcommand' subcmds
+    return
+  fi
+
+  case "${words[2]}" in
+    cd)
+      if (( CURRENT == 3 )); then
+        local -a targets
+        targets=('root:main repo root')
+        targets+=(${(f)"$(git worktree list --porcelain 2>/dev/null | grep '^branch' | sed 's|branch refs/heads/||')"})
+        _describe 'worktree' targets
+      fi
+      ;;
+    rm)
+      if (( CURRENT == 3 )); then
+        local -a branches
+        branches=(${(f)"$(git worktree list --porcelain 2>/dev/null | grep '^branch' | sed 's|branch refs/heads/||')"})
+        _describe 'worktree' branches
+      fi
+      ;;
+    add)
+      if (( CURRENT == 3 )); then
+        local -a opts branches
+        opts=('-b:create new branch')
+        branches=(${(f)"$(git branch --format='%(refname:short)' 2>/dev/null)"})
+        _describe 'option' opts
+        _describe 'branch' branches
+      elif (( CURRENT == 4 )) && [[ "${words[3]}" == "-b" ]]; then
+        return
+      fi
       ;;
   esac
 }
